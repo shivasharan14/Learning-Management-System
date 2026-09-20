@@ -1,0 +1,975 @@
+/* ============================================================
+   LEARNHUB — PROFESSIONAL LMS NAVBAR
+   Clean SaaS / Production UI
+   Deep Navy + Indigo Accent
+   ============================================================ */
+
+
+/* ============================================================
+   01. NAVBAR
+   ============================================================ */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  width: 100%;
+  height: 74px;
+
+  background:
+    rgba(255, 255, 255, 0.94);
+
+  border-bottom:
+    1px solid
+    #e8ecf3;
+
+  backdrop-filter:
+    blur(18px);
+
+  -webkit-backdrop-filter:
+    blur(18px);
+
+  box-shadow:
+    0 1px 3px
+    rgba(15, 23, 42, 0.035);
+}
+
+
+/* ============================================================
+   02. NAVBAR CONTAINER
+   ============================================================ */
+
+.container {
+  width: 100%;
+  max-width: 1240px;
+
+  height: 100%;
+
+  margin: 0 auto;
+
+  padding:
+    0 30px;
+
+  display: flex;
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 25px;
+}
+
+
+/* ============================================================
+   03. LOGO
+   ============================================================ */
+
+.logo {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 11px;
+
+  flex-shrink: 0;
+
+  text-decoration: none;
+}
+
+
+/* Logo mark */
+
+.logoMark {
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 11px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #5b55ee 0%,
+      #4338ca 100%
+    );
+
+  color: #ffffff;
+
+  font-size: 18px;
+
+  font-weight: 850;
+
+  box-shadow:
+    0 8px 20px
+    rgba(79, 70, 229, 0.20);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.logo:hover .logoMark {
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 11px 25px
+    rgba(79, 70, 229, 0.26);
+}
+
+
+/* Logo name */
+
+.logoName {
+  color:
+    #111827;
+
+  font-size: 21px;
+
+  font-weight: 800;
+
+  line-height: 1;
+
+  letter-spacing:
+    -0.045em;
+}
+
+.logoName span {
+  color:
+    #4f46e5;
+}
+
+
+/* ============================================================
+   04. NAVIGATION
+   ============================================================ */
+
+.navigation {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 3px;
+
+  margin-left: auto;
+}
+
+
+/* ============================================================
+   05. NAV LINK
+   ============================================================ */
+
+.navLink {
+  position: relative;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-height: 38px;
+
+  padding:
+    0 12px;
+
+  border-radius: 8px;
+
+  color:
+    #64748b;
+
+  text-decoration: none;
+
+  font-size: 13px;
+
+  font-weight: 650;
+
+  white-space: nowrap;
+
+  transition:
+    color 0.2s ease,
+    background 0.2s ease;
+}
+
+
+/* Hover */
+
+.navLink:hover {
+  color:
+    #1e293b;
+
+  background:
+    #f1f5f9;
+}
+
+
+/* Small active/hover indicator */
+
+.navLink::after {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  bottom: 4px;
+
+  width: 0;
+  height: 2px;
+
+  border-radius: 999px;
+
+  background:
+    #4f46e5;
+
+  transform:
+    translateX(-50%);
+
+  transition:
+    width 0.2s ease;
+}
+
+.navLink:hover::after {
+  width: 15px;
+}
+
+
+/* ============================================================
+   06. LOGIN
+   ============================================================ */
+
+.login {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-height: 38px;
+
+  margin-left: 8px;
+
+  padding:
+    0 13px;
+
+  border-radius: 8px;
+
+  color:
+    #475569;
+
+  text-decoration: none;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  white-space: nowrap;
+
+  transition:
+    color 0.2s ease,
+    background 0.2s ease;
+}
+
+.login:hover {
+  color:
+    #1e293b;
+
+  background:
+    #f1f5f9;
+}
+
+
+/* ============================================================
+   07. GET STARTED
+   ============================================================ */
+
+.getStarted {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  min-height: 40px;
+
+  margin-left: 3px;
+
+  padding:
+    0 17px;
+
+  border:
+    1px solid
+    rgba(79, 70, 229, 0.15);
+
+  border-radius: 9px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #5b55ee,
+      #4338ca
+    );
+
+  color:
+    #ffffff;
+
+  text-decoration: none;
+
+  font-size: 12.5px;
+
+  font-weight: 750;
+
+  box-shadow:
+    0 7px 18px
+    rgba(79, 70, 229, 0.18);
+
+  white-space: nowrap;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.getStarted span {
+  font-size: 15px;
+
+  line-height: 1;
+}
+
+.getStarted:hover {
+  transform:
+    translateY(-1px);
+
+  background:
+    linear-gradient(
+      135deg,
+      #635bff,
+      #4f46e5
+    );
+
+  box-shadow:
+    0 10px 24px
+    rgba(79, 70, 229, 0.25);
+}
+
+
+/* ============================================================
+   08. USER AREA
+   ============================================================ */
+
+.userArea {
+  display: flex;
+
+  align-items: center;
+
+  gap: 11px;
+
+  margin-left: 9px;
+
+  padding-left: 15px;
+
+  border-left:
+    1px solid
+    #e2e8f0;
+}
+
+
+/* ============================================================
+   09. USER INFO
+   ============================================================ */
+
+.userInfo {
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  min-width: 0;
+}
+
+
+/* ============================================================
+   10. AVATAR
+   ============================================================ */
+
+.avatar {
+  width: 36px;
+  height: 36px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border:
+    1px solid
+    #c7d2fe;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      135deg,
+      #eef2ff,
+      #f5f3ff
+    );
+
+  color:
+    #4f46e5;
+
+  font-size: 12px;
+
+  font-weight: 850;
+}
+
+
+/* ============================================================
+   11. USER NAME
+   ============================================================ */
+
+.userName {
+  max-width: 125px;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+
+  color:
+    #334155;
+
+  font-size: 12.5px;
+
+  font-weight: 700;
+}
+
+
+/* ============================================================
+   12. LOGOUT
+   ============================================================ */
+
+.logout {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-height: 34px;
+
+  padding:
+    0 12px;
+
+  border:
+    1px solid
+    #dbe2ea;
+
+  border-radius: 8px;
+
+  background:
+    #ffffff;
+
+  color:
+    #64748b;
+
+  font-size: 11.5px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.logout:hover {
+  color:
+    #dc2626;
+
+  border-color:
+    #fecaca;
+
+  background:
+    #fff7f7;
+}
+
+
+/* ============================================================
+   13. TABLET
+   ============================================================ */
+
+@media (max-width: 1100px) {
+
+  .container {
+    padding:
+      0 22px;
+
+    gap: 16px;
+  }
+
+  .navigation {
+    gap: 1px;
+  }
+
+  .navLink {
+    padding:
+      0 9px;
+
+    font-size: 12.5px;
+  }
+
+  .login {
+    padding:
+      0 10px;
+
+    font-size: 12.5px;
+  }
+
+  .getStarted {
+    padding:
+      0 14px;
+
+    font-size: 12px;
+  }
+
+  .userName {
+    display: none;
+  }
+
+  .userArea {
+    gap: 8px;
+
+    padding-left: 11px;
+  }
+}
+
+
+/* ============================================================
+   14. SMALL TABLET
+   ============================================================ */
+
+@media (max-width: 900px) {
+
+  .navbar {
+    height: 70px;
+  }
+
+  .container {
+    padding:
+      0 18px;
+  }
+
+  .logoMark {
+    width: 38px;
+    height: 38px;
+
+    border-radius: 10px;
+  }
+
+  .logoName {
+    font-size: 20px;
+  }
+
+  .navLink {
+    min-height: 36px;
+
+    padding:
+      0 7px;
+
+    font-size: 12px;
+  }
+
+  .login {
+    margin-left: 3px;
+
+    padding:
+      0 8px;
+
+    font-size: 12px;
+  }
+
+  .getStarted {
+    min-height: 37px;
+
+    padding:
+      0 11px;
+  }
+
+  .userArea {
+    margin-left: 3px;
+
+    padding-left: 8px;
+  }
+
+  .logout {
+    padding:
+      0 9px;
+
+    font-size: 11px;
+  }
+}
+
+
+/* ============================================================
+   15. MOBILE
+   ============================================================ */
+
+@media (max-width: 700px) {
+
+  .navbar {
+    height: auto;
+
+    min-height: 66px;
+  }
+
+  .container {
+    min-height: 66px;
+
+    padding:
+      10px 15px;
+
+    gap: 10px;
+  }
+
+
+  /* Logo */
+
+  .logo {
+    gap: 8px;
+
+    flex-shrink: 0;
+  }
+
+  .logoMark {
+    width: 35px;
+    height: 35px;
+
+    border-radius: 9px;
+
+    font-size: 16px;
+  }
+
+  .logoName {
+    font-size: 18px;
+  }
+
+
+  /* Navigation */
+
+  .navigation {
+    flex: 1;
+
+    min-width: 0;
+
+    justify-content: flex-start;
+
+    overflow-x: auto;
+
+    scrollbar-width: none;
+
+    -ms-overflow-style: none;
+  }
+
+  .navigation::-webkit-scrollbar {
+    display: none;
+  }
+
+  .navLink {
+    flex-shrink: 0;
+
+    min-height: 35px;
+
+    padding:
+      0 8px;
+
+    font-size: 11.5px;
+  }
+
+
+  /* Login */
+
+  .login {
+    flex-shrink: 0;
+
+    min-height: 35px;
+
+    padding:
+      0 8px;
+
+    font-size: 11.5px;
+  }
+
+
+  /* Get started */
+
+  .getStarted {
+    flex-shrink: 0;
+
+    min-height: 36px;
+
+    padding:
+      0 11px;
+
+    border-radius: 8px;
+
+    font-size: 11px;
+  }
+
+  .getStarted span {
+    font-size: 13px;
+  }
+
+
+  /* User */
+
+  .userArea {
+    flex-shrink: 0;
+
+    margin-left: 2px;
+
+    padding-left: 6px;
+
+    gap: 7px;
+  }
+
+  .userInfo {
+    gap: 0;
+  }
+
+  .avatar {
+    width: 34px;
+    height: 34px;
+
+    font-size: 11px;
+  }
+
+  .userName {
+    display: none;
+  }
+
+  .logout {
+    min-height: 33px;
+
+    padding:
+      0 8px;
+
+    font-size: 10.5px;
+  }
+}
+
+
+/* ============================================================
+   16. SMALL MOBILE
+   ============================================================ */
+
+@media (max-width: 480px) {
+
+  .navbar {
+    min-height: 62px;
+  }
+
+  .container {
+    min-height: 62px;
+
+    padding:
+      9px 11px;
+
+    gap: 7px;
+  }
+
+
+  /* Logo */
+
+  .logo {
+    gap: 6px;
+  }
+
+  .logoMark {
+    width: 32px;
+    height: 32px;
+
+    border-radius: 8px;
+
+    font-size: 15px;
+  }
+
+  .logoName {
+    font-size: 16px;
+  }
+
+
+  /* Navigation */
+
+  .navigation {
+    gap: 0;
+  }
+
+  .navLink {
+    min-height: 32px;
+
+    padding:
+      0 6px;
+
+    font-size: 10.5px;
+  }
+
+  .navLink::after {
+    bottom: 2px;
+  }
+
+
+  /* Login */
+
+  .login {
+    min-height: 32px;
+
+    padding:
+      0 6px;
+
+    font-size: 10.5px;
+  }
+
+
+  /* Get started */
+
+  .getStarted {
+    min-height: 33px;
+
+    padding:
+      0 9px;
+
+    font-size: 10px;
+  }
+
+  .getStarted span {
+    display: none;
+  }
+
+
+  /* User */
+
+  .userArea {
+    margin-left: 0;
+
+    padding-left: 4px;
+
+    border-left: none;
+  }
+
+  .avatar {
+    width: 31px;
+    height: 31px;
+
+    font-size: 10px;
+  }
+
+  .logout {
+    min-height: 31px;
+
+    padding:
+      0 7px;
+
+    font-size: 9.5px;
+  }
+}
+
+
+/* ============================================================
+   17. EXTRA SMALL DEVICES
+   ============================================================ */
+
+@media (max-width: 380px) {
+
+  .container {
+    padding:
+      8px 9px;
+
+    gap: 5px;
+  }
+
+  .logoName {
+    font-size: 15px;
+  }
+
+  .logoMark {
+    width: 30px;
+    height: 30px;
+  }
+
+  .navLink {
+    padding:
+      0 5px;
+
+    font-size: 10px;
+  }
+
+  .login {
+    padding:
+      0 5px;
+
+    font-size: 10px;
+  }
+
+  .getStarted {
+    padding:
+      0 8px;
+
+    font-size: 9.5px;
+  }
+
+  .avatar {
+    width: 29px;
+    height: 29px;
+  }
+
+  .logout {
+    padding:
+      0 6px;
+
+    font-size: 9px;
+  }
+}
+
+
+/* ============================================================
+   18. KEYBOARD ACCESSIBILITY
+   ============================================================ */
+
+.navLink:focus-visible,
+.login:focus-visible,
+.getStarted:focus-visible,
+.logo:focus-visible,
+.logout:focus-visible {
+  outline:
+    3px solid
+    rgba(79, 70, 229, 0.22);
+
+  outline-offset: 3px;
+}
+
+
+/* ============================================================
+   19. REDUCED MOTION
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .logoMark,
+  .navLink,
+  .login,
+  .getStarted,
+  .logout {
+    transition: none;
+  }
+}

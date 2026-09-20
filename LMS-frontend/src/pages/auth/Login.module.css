@@ -1,0 +1,227 @@
+.page {
+  min-height: calc(100vh - 72px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 50px 20px;
+
+  background:
+    radial-gradient(
+      circle at top left,
+      #e0f2fe,
+      transparent 35%
+    ),
+    #f8fafc;
+}
+
+/* ================= CARD ================= */
+
+.loginCard {
+  width: 100%;
+  max-width: 430px;
+
+  padding: 40px;
+
+  background: white;
+
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
+}
+
+/* ================= LOGO ================= */
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+
+  margin-bottom: 35px;
+
+  color: #0f172a;
+  text-decoration: none;
+
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.logoIcon {
+  width: 36px;
+  height: 36px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+
+  background: #0284c7;
+  color: white;
+
+  font-weight: 800;
+}
+
+/* ================= HEADER ================= */
+
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header h1 {
+  margin: 0 0 9px;
+
+  color: #0f172a;
+
+  font-size: 30px;
+  letter-spacing: -0.5px;
+}
+
+.header p {
+  margin: 0;
+
+  color: #64748b;
+
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ================= FORM ================= */
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field label {
+  color: #334155;
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.field input {
+  width: 100%;
+  box-sizing: border-box;
+
+  padding: 13px 14px;
+
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+
+  outline: none;
+
+  color: #0f172a;
+  background: white;
+
+  font-size: 14px;
+
+  transition: 0.2s ease;
+}
+
+.field input::placeholder {
+  color: #94a3b8;
+}
+
+.field input:focus {
+  border-color: #0284c7;
+
+  box-shadow:
+    0 0 0 3px rgba(2, 132, 199, 0.1);
+}
+
+/* ================= PASSWORD ================= */
+
+.passwordLabel {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* ================= BUTTON ================= */
+
+.loginButton {
+  width: 100%;
+
+  margin-top: 5px;
+  padding: 13px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: #0284c7;
+  color: white;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.loginButton:hover {
+  background: #0369a1;
+}
+
+.loginButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ================= REGISTER ================= */
+
+.register {
+  margin-top: 28px;
+  padding-top: 22px;
+
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+
+  border-top: 1px solid #e2e8f0;
+
+  font-size: 13px;
+}
+
+.register span {
+  color: #64748b;
+}
+
+.register a {
+  color: #0284c7;
+
+  text-decoration: none;
+
+  font-weight: 600;
+}
+
+.register a:hover {
+  text-decoration: underline;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 500px) {
+  .page {
+    padding: 30px 15px;
+  }
+
+  .loginCard {
+    padding: 30px 22px;
+  }
+
+  .header h1 {
+    font-size: 26px;
+  }
+}

@@ -1,0 +1,1428 @@
+/* =========================================================
+   COURSE DETAILS — PROFESSIONAL LMS UI
+   ========================================================= */
+
+.page {
+  --primary: #4f46e5;
+  --primary-dark: #3730a3;
+  --primary-soft: #eef2ff;
+
+  --text: #172033;
+  --text-secondary: #667085;
+  --text-light: #98a2b3;
+
+  --white: #ffffff;
+  --page-bg: #f6f7fb;
+  --surface: #ffffff;
+
+  --border: #e7eaf0;
+  --border-dark: #d9deea;
+
+  --success: #12b76a;
+  --success-soft: #ecfdf3;
+
+  --warning: #f79009;
+  --warning-soft: #fffaeb;
+
+  --danger: #f04438;
+
+  --shadow-sm: 0 2px 8px rgba(16, 24, 40, 0.05);
+  --shadow-md: 0 8px 24px rgba(16, 24, 40, 0.08);
+  --shadow-lg: 0 18px 45px rgba(16, 24, 40, 0.12);
+
+  min-height: 100vh;
+  background: var(--page-bg);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+
+/* =========================================================
+   COMMON
+   ========================================================= */
+
+.container {
+  width: min(1180px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+.page button,
+.page a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.page button {
+  font-family: inherit;
+}
+
+.page button:focus-visible,
+.page a:focus-visible {
+  outline: 3px solid rgba(79, 70, 229, 0.25);
+  outline-offset: 3px;
+}
+
+
+/* =========================================================
+   LOADING
+   ========================================================= */
+
+.loadingState {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 18px;
+  color: var(--text-secondary);
+  font-size: 15px;
+}
+
+.spinner {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 4px solid #e4e7ec;
+  border-top-color: var(--primary);
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.emptyState {
+  width: min(650px, calc(100% - 40px));
+  min-height: 55vh;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  gap: 15px;
+}
+
+.emptyState h2 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 750;
+  color: var(--text);
+}
+
+.emptyState p {
+  margin: 0;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.primaryButton {
+  margin-top: 8px;
+  border: 0;
+  border-radius: 10px;
+  padding: 12px 20px;
+  background: var(--primary);
+  color: white;
+  font-weight: 650;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.primaryButton:hover {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   HERO SECTION
+   ========================================================= */
+
+.heroSection {
+  position: relative;
+  overflow: visible;
+  background:
+    radial-gradient(
+      circle at 85% 15%,
+      rgba(129, 140, 248, 0.28),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 10% 90%,
+      rgba(99, 102, 241, 0.18),
+      transparent 28%
+    ),
+    linear-gradient(135deg, #111827 0%, #1e1b4b 48%, #312e81 100%);
+  color: white;
+  padding: 28px 0 68px;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(17, 24, 39, 0.35),
+      transparent 55%
+    );
+}
+
+.heroSection .container {
+  position: relative;
+  z-index: 2;
+}
+
+
+/* =========================================================
+   BREADCRUMB
+   ========================================================= */
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  flex-wrap: wrap;
+  margin-bottom: 35px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.68);
+}
+
+.breadcrumb a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+.breadcrumb a:hover {
+  color: white;
+}
+
+.breadcrumb span {
+  color: rgba(255, 255, 255, 0.38);
+}
+
+
+/* =========================================================
+   HERO GRID
+   ========================================================= */
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(320px, 390px);
+  gap: 55px;
+  align-items: start;
+}
+
+.heroContent {
+  min-width: 0;
+  padding-top: 8px;
+}
+
+.categoryBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 13px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.17);
+  backdrop-filter: blur(8px);
+  color: #e0e7ff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+.heroContent h1 {
+  max-width: 800px;
+  margin: 17px 0 16px;
+  font-size: clamp(34px, 4vw, 52px);
+  line-height: 1.08;
+  letter-spacing: -1.4px;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.heroDescription {
+  max-width: 760px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+
+/* =========================================================
+   INSTRUCTOR
+   ========================================================= */
+
+.instructorInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 27px;
+}
+
+.instructorAvatar {
+  width: 43px;
+  height: 43px;
+  flex: 0 0 43px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #818cf8, #4f46e5);
+  color: white;
+  font-weight: 800;
+  font-size: 16px;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.18);
+}
+
+.instructorInfo span {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 12px;
+}
+
+.instructorInfo strong {
+  display: block;
+  margin-top: 2px;
+  color: white;
+  font-size: 14px;
+  font-weight: 650;
+}
+
+
+/* =========================================================
+   COURSE META
+   ========================================================= */
+
+.courseMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 27px;
+}
+
+.metaItem {
+  min-width: 105px;
+  padding: 11px 14px;
+  border-radius: 11px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 13px;
+}
+
+.metaItem strong {
+  display: block;
+  margin-bottom: 2px;
+  color: white;
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   ENROLLMENT CARD
+   ========================================================= */
+
+.enrollmentCard {
+  position: sticky;
+  top: 25px;
+  overflow: hidden;
+  border-radius: 20px;
+  background: white;
+  color: var(--text);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 25px 55px rgba(0, 0, 0, 0.22);
+}
+
+.courseThumbnail {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+.courseThumbnailPlaceholder {
+  width: 100%;
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    linear-gradient(
+      135deg,
+      #e0e7ff 0%,
+      #eef2ff 50%,
+      #ddd6fe 100%
+    );
+  color: #4f46e5;
+  font-size: 52px;
+  font-weight: 800;
+}
+
+.enrollmentBody {
+  padding: 24px;
+}
+
+.accessBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 7px;
+  background: var(--success-soft);
+  color: #087443;
+  font-size: 11px;
+  font-weight: 750;
+  margin-bottom: 14px;
+}
+
+.price {
+  margin-bottom: 20px;
+  font-size: 27px;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.enrollButton {
+  width: 100%;
+  min-height: 49px;
+  border: 0;
+  border-radius: 11px;
+  background: linear-gradient(
+    135deg,
+    var(--primary),
+    #6366f1
+  );
+  color: white;
+  font-size: 15px;
+  font-weight: 750;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(79, 70, 229, 0.25);
+  transition: 0.2s ease;
+}
+
+.enrollButton:hover {
+  background: linear-gradient(
+    135deg,
+    var(--primary-dark),
+    var(--primary)
+  );
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px rgba(79, 70, 229, 0.32);
+}
+
+.enrollButton:active {
+  transform: translateY(0);
+}
+
+
+/* =========================================================
+   OVERVIEW SECTION
+   ========================================================= */
+
+.overviewSection {
+  padding: 62px 0 20px;
+}
+
+.sectionHeader {
+  margin-bottom: 28px;
+}
+
+.sectionEyebrow {
+  margin-bottom: 8px;
+  color: var(--primary);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+}
+
+.sectionHeader h2 {
+  margin: 0;
+  color: var(--text);
+  font-size: 30px;
+  line-height: 1.25;
+  letter-spacing: -0.5px;
+  font-weight: 780;
+}
+
+
+/* =========================================================
+   OVERVIEW GRID
+   ========================================================= */
+
+.overviewGrid {
+  display: grid;
+  grid-template-columns: 1.45fr 0.75fr;
+  gap: 24px;
+}
+
+.overviewCard {
+  padding: 30px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.overviewIcon {
+  width: 47px;
+  height: 47px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+  border-radius: 12px;
+  background: var(--primary-soft);
+  color: var(--primary);
+  font-size: 22px;
+}
+
+.overviewCard h3 {
+  margin: 0 0 12px;
+  font-size: 18px;
+  font-weight: 750;
+}
+
+.descriptionBox {
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.descriptionBox p {
+  margin: 0 0 10px;
+}
+
+.descriptionBox p:last-child {
+  margin-bottom: 0;
+}
+
+
+/* =========================================================
+   LEARNING SECTION
+   ========================================================= */
+
+.learningSection {
+  margin-top: 24px;
+}
+
+.learningGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 11px;
+}
+
+.learningItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  padding: 13px 14px;
+  border-radius: 10px;
+  background: #f8f9fc;
+  border: 1px solid #edf0f5;
+  color: #475467;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.learningItem::before {
+  content: "✓";
+  flex: 0 0 21px;
+  width: 21px;
+  height: 21px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--success-soft);
+  color: var(--success);
+  font-size: 11px;
+  font-weight: 900;
+}
+
+
+/* =========================================================
+   INCLUDES
+   ========================================================= */
+
+.includesSection {
+  margin-top: 24px;
+}
+
+.includesGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.includeItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 50px;
+  padding: 10px 13px;
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  background: white;
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+
+.includeItem svg,
+.includeItem span:first-child {
+  color: var(--primary);
+}
+
+
+/* =========================================================
+   LOCKED SECTION
+   ========================================================= */
+
+.lockedSection {
+  margin: 28px 0 35px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 22px;
+  align-items: center;
+  padding: 30px;
+  border: 1px solid #e0e7ff;
+  border-radius: 18px;
+  background:
+    linear-gradient(
+      135deg,
+      #f8faff 0%,
+      #eef2ff 100%
+    );
+}
+
+.lockedIcon {
+  width: 62px;
+  height: 62px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  background: white;
+  border: 1px solid #e0e7ff;
+  color: var(--primary);
+  font-size: 27px;
+  box-shadow: var(--shadow-sm);
+}
+
+.lockedContent h3 {
+  margin: 0 0 7px;
+  color: var(--text);
+  font-size: 20px;
+  font-weight: 750;
+}
+
+.lockedContent p {
+  margin: 0;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+.lockedBadge {
+  display: inline-flex;
+  margin-bottom: 10px;
+  padding: 5px 9px;
+  border-radius: 6px;
+  background: #e0e7ff;
+  color: var(--primary-dark);
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.lockedFeatures {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.lockedFeatures span {
+  padding: 7px 10px;
+  border-radius: 7px;
+  background: white;
+  border: 1px solid #e4e7ec;
+  color: #667085;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   COURSE CONTENT
+   ========================================================= */
+
+.contentSection {
+  padding: 30px 0 80px;
+}
+
+.contentSection > .container {
+  min-width: 0;
+}
+
+.contentSectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.contentSectionHeader h2 {
+  margin: 0;
+  color: var(--text);
+  font-size: 25px;
+  font-weight: 780;
+}
+
+.countBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 34px;
+  height: 28px;
+  padding: 0 9px;
+  border-radius: 999px;
+  background: var(--primary-soft);
+  color: var(--primary);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   PROGRESS CARD
+   ========================================================= */
+
+.progressCard {
+  margin-bottom: 35px;
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: white;
+  box-shadow: var(--shadow-sm);
+}
+
+.progressTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 12px;
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.progressTop strong {
+  color: var(--primary);
+  font-size: 15px;
+}
+
+.progressBar {
+  width: 100%;
+  height: 9px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #eaecf0;
+}
+
+.progressFill {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(
+    90deg,
+    #4f46e5,
+    #818cf8
+  );
+  transition: width 0.5s ease;
+}
+
+
+/* =========================================================
+   MATERIAL SECTION
+   ========================================================= */
+
+.materialSection {
+  margin-top: 35px;
+}
+
+.materialSection + .materialSection {
+  margin-top: 48px;
+}
+
+
+/* =========================================================
+   INLINE LOADING
+   ========================================================= */
+
+.loadingInline {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 25px;
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+
+.loadingInline::before {
+  content: "";
+  width: 17px;
+  height: 17px;
+  border: 2px solid #e4e7ec;
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+
+/* =========================================================
+   EMPTY CONTENT
+   ========================================================= */
+
+.emptyContent {
+  padding: 35px 20px;
+  text-align: center;
+  border: 1px dashed var(--border-dark);
+  border-radius: 14px;
+  color: var(--text-light);
+  background: #fafbfc;
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   CONTENT CARDS
+   ========================================================= */
+
+.carouselWrapper {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+}
+
+.carouselTrack {
+  display: flex;
+  gap: 18px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  padding: 4px 2px 14px;
+  scrollbar-width: thin;
+  scrollbar-color: #cfd4dc transparent;
+}
+
+.carouselTrack::-webkit-scrollbar {
+  height: 6px;
+}
+
+.carouselTrack::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.carouselTrack::-webkit-scrollbar-thumb {
+  background: #d0d5dd;
+  border-radius: 999px;
+}
+
+.contentCard {
+  flex: 0 0 calc((100% - 36px) / 3);
+  min-width: 0;
+  scroll-snap-align: start;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: white;
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease,
+    border-color 0.22s ease;
+}
+
+.contentCard:hover {
+  transform: translateY(-4px);
+  border-color: #d7d9ff;
+  box-shadow: var(--shadow-md);
+}
+
+.contentCardIcon {
+  height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    linear-gradient(
+      135deg,
+      #eef2ff,
+      #f5f3ff
+    );
+  color: var(--primary);
+  font-size: 35px;
+}
+
+.contentCardBody {
+  padding: 19px;
+}
+
+.cardNumber {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 9px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: #f2f4f7;
+  color: #667085;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.contentCardBody h3 {
+  margin: 0 0 7px;
+  color: var(--text);
+  font-size: 16px;
+  line-height: 1.4;
+  font-weight: 720;
+}
+
+.contentCardBody p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.cardButton {
+  width: 100%;
+  margin-top: 16px;
+  min-height: 40px;
+  border: 1px solid #d9d6fe;
+  border-radius: 9px;
+  background: var(--primary-soft);
+  color: var(--primary-dark);
+  font-size: 12px;
+  font-weight: 750;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.cardButton:hover {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+
+/* =========================================================
+   CAROUSEL ARROWS
+   ========================================================= */
+
+.carouselArrow {
+  position: absolute;
+  top: 50%;
+  z-index: 5;
+  width: 39px;
+  height: 39px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: white;
+  color: var(--text);
+  box-shadow: 0 7px 18px rgba(16, 24, 40, 0.14);
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition: 0.2s ease;
+}
+
+.carouselArrow:hover {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+.carouselArrowLeft {
+  left: -19px;
+}
+
+.carouselArrowRight {
+  right: -19px;
+}
+
+
+/* =========================================================
+   RESOURCE CARDS
+   ========================================================= */
+
+.resourceCard {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 17px;
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  background: white;
+  box-shadow: var(--shadow-sm);
+  transition: 0.2s ease;
+}
+
+.resourceCard:hover {
+  border-color: #d7d9ff;
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.resourceIcon {
+  width: 43px;
+  height: 43px;
+  flex: 0 0 43px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 11px;
+  background: #fff7ed;
+  color: #ea580c;
+  font-size: 20px;
+}
+
+.resourceCard h3 {
+  margin: 0 0 4px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.resourceCard p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+
+.noResource {
+  padding: 24px;
+  border: 1px dashed var(--border-dark);
+  border-radius: 12px;
+  color: var(--text-light);
+  background: #fafbfc;
+  text-align: center;
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   ACTIVITY CARDS
+   ========================================================= */
+
+.activityCard {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 17px;
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  background: white;
+  box-shadow: var(--shadow-sm);
+  transition: 0.2s ease;
+}
+
+.activityCard:hover {
+  border-color: #d7d9ff;
+  box-shadow: var(--shadow-md);
+}
+
+.activityIcon {
+  width: 43px;
+  height: 43px;
+  flex: 0 0 43px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 11px;
+  background: var(--success-soft);
+  color: var(--success);
+  font-size: 19px;
+}
+
+.activityCard h3 {
+  margin: 0 0 4px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.activityCard p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+
+
+/* =========================================================
+   VIDEO MODAL
+   ========================================================= */
+
+.videoModal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+  background: rgba(8, 15, 30, 0.78);
+  backdrop-filter: blur(5px);
+}
+
+.videoModalContent {
+  position: relative;
+  width: min(960px, 100%);
+  overflow: hidden;
+  border-radius: 18px;
+  background: #080b12;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+}
+
+.videoCloseButton {
+  position: absolute;
+  top: 13px;
+  right: 13px;
+  z-index: 5;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.65);
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+  transition: 0.2s ease;
+}
+
+.videoCloseButton:hover {
+  background: white;
+  color: #111827;
+}
+
+.videoPlayer {
+  display: block;
+  width: 100%;
+  max-height: 80vh;
+  background: black;
+}
+
+
+/* =========================================================
+   DESKTOP LARGE
+   ========================================================= */
+
+@media (min-width: 1400px) {
+  .container {
+    width: min(1240px, calc(100% - 60px));
+  }
+
+  .heroSection {
+    padding-top: 35px;
+  }
+
+  .heroContent h1 {
+    font-size: 56px;
+  }
+
+  .contentCard {
+    flex-basis: calc((100% - 54px) / 4);
+  }
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1024px) {
+  .heroGrid {
+    grid-template-columns: minmax(0, 1fr) 330px;
+    gap: 32px;
+  }
+
+  .heroContent h1 {
+    font-size: 39px;
+  }
+
+  .overviewGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .contentCard {
+    flex-basis: calc((100% - 18px) / 2);
+  }
+
+  .carouselArrowLeft {
+    left: -12px;
+  }
+
+  .carouselArrowRight {
+    right: -12px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE TABLET
+   ========================================================= */
+
+@media (max-width: 768px) {
+  .container {
+    width: min(100% - 28px, 620px);
+  }
+
+  .heroSection {
+    padding: 22px 0 45px;
+  }
+
+  .breadcrumb {
+    margin-bottom: 25px;
+  }
+
+  .heroGrid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .heroContent h1 {
+    font-size: 34px;
+    letter-spacing: -0.8px;
+  }
+
+  .heroDescription {
+    font-size: 14px;
+  }
+
+  .courseMeta {
+    gap: 8px;
+  }
+
+  .metaItem {
+    flex: 1 1 calc(50% - 8px);
+  }
+
+  .enrollmentCard {
+    position: static;
+  }
+
+  .courseThumbnail,
+  .courseThumbnailPlaceholder {
+    height: 230px;
+  }
+
+  .overviewSection {
+    padding-top: 42px;
+  }
+
+  .sectionHeader h2 {
+    font-size: 26px;
+  }
+
+  .overviewCard {
+    padding: 23px;
+  }
+
+  .learningGrid,
+  .includesGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .lockedSection {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 24px;
+  }
+
+  .lockedIcon {
+    margin: 0 auto;
+  }
+
+  .lockedFeatures {
+    justify-content: center;
+  }
+
+  .contentSection {
+    padding-bottom: 55px;
+  }
+
+  .contentCard {
+    flex-basis: calc(100% - 25px);
+  }
+
+  .carouselArrow {
+    display: none;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 560px) {
+  .container {
+    width: calc(100% - 22px);
+  }
+
+  .heroSection {
+    padding-bottom: 32px;
+  }
+
+  .heroContent h1 {
+    margin-top: 13px;
+    font-size: 29px;
+    line-height: 1.15;
+  }
+
+  .heroDescription {
+    font-size: 13px;
+    line-height: 1.65;
+  }
+
+  .instructorInfo {
+    margin-top: 21px;
+  }
+
+  .courseMeta {
+    margin-top: 20px;
+  }
+
+  .metaItem {
+    padding: 10px;
+    font-size: 11px;
+  }
+
+  .metaItem strong {
+    font-size: 12px;
+  }
+
+  .courseThumbnail,
+  .courseThumbnailPlaceholder {
+    height: 190px;
+  }
+
+  .enrollmentBody {
+    padding: 19px;
+  }
+
+  .price {
+    font-size: 24px;
+  }
+
+  .overviewSection {
+    padding-top: 35px;
+  }
+
+  .sectionHeader {
+    margin-bottom: 20px;
+  }
+
+  .sectionHeader h2 {
+    font-size: 23px;
+  }
+
+  .overviewCard {
+    padding: 20px;
+    border-radius: 14px;
+  }
+
+  .descriptionBox {
+    font-size: 13px;
+  }
+
+  .lockedSection {
+    margin: 23px 0 28px;
+    border-radius: 14px;
+  }
+
+  .contentSectionHeader {
+    align-items: flex-start;
+  }
+
+  .contentSectionHeader h2 {
+    font-size: 21px;
+  }
+
+  .progressCard {
+    padding: 18px;
+  }
+
+  .resourceCard,
+  .activityCard {
+    padding: 14px;
+  }
+
+  .videoModal {
+    padding: 12px;
+  }
+
+  .videoModalContent {
+    border-radius: 12px;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL DEVICES
+   ========================================================= */
+
+@media (max-width: 380px) {
+  .heroContent h1 {
+    font-size: 26px;
+  }
+
+  .metaItem {
+    flex-basis: 100%;
+  }
+
+  .enrollmentBody {
+    padding: 16px;
+  }
+
+  .overviewCard {
+    padding: 17px;
+  }
+
+  .lockedSection {
+    padding: 19px;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .page *,
+  .page *::before,
+  .page *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
