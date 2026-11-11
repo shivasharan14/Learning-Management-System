@@ -18,7 +18,6 @@ function Navbar() {
   return (
     <nav className={styles.navbar}>
       <div className={styles.container}>
-
         {/* Logo */}
         <Link to="/" className={styles.logo}>
           <span className={styles.logoMark}>L</span>
@@ -30,7 +29,6 @@ function Navbar() {
 
         {/* Navigation */}
         <div className={styles.navigation}>
-
           <Link to="/" className={styles.navLink}>
             Home
           </Link>
@@ -44,6 +42,15 @@ function Navbar() {
               <Link to="/my-progress" className={styles.navLink}>
                 Progress
               </Link>
+              <Link to="/become-instructor" className={styles.navLink}>
+                Become an Instructor
+              </Link>
+              <Link
+  to="/my-instructor-request"
+  className={styles.navLink}
+>
+  My Instructor Request
+</Link>
 
               <Link to="/my-certificates" className={styles.navLink}>
                 Certificates
@@ -53,17 +60,11 @@ function Navbar() {
 
           {isAuthenticated && user?.role === "instructor" && (
             <>
-              <Link
-                to="/instructor/dashboard"
-                className={styles.navLink}
-              >
+              <Link to="/instructor/dashboard" className={styles.navLink}>
                 Dashboard
               </Link>
 
-              <Link
-                to="/instructor/overview"
-                className={styles.navLink}
-              >
+              <Link to="/instructor/overview" className={styles.navLink}>
                 Overview
               </Link>
             </>
@@ -71,24 +72,18 @@ function Navbar() {
 
           {isAuthenticated && user?.role === "admin" && (
             <>
-              <Link
-                to="/admin/dashboard"
-                className={styles.navLink}
-              >
+              <Link to="/admin/dashboard" className={styles.navLink}>
                 Dashboard
               </Link>
 
-              <Link
-                to="/admin/users"
-                className={styles.navLink}
-              >
+              <Link to="/admin/users" className={styles.navLink}>
                 Users
               </Link>
 
-              <Link
-                to="/admin/courses"
-                className={styles.navLink}
-              >
+              <Link to="/admin/instructor-requests" className={styles.navLink}>
+                Instructor Requests
+              </Link>
+              <Link to="/admin/courses" className={styles.navLink}>
                 Courses
               </Link>
             </>
@@ -111,27 +106,19 @@ function Navbar() {
           {/* Logged-in user */}
           {isAuthenticated && (
             <div className={styles.userArea}>
-
               <div className={styles.userInfo}>
                 <div className={styles.avatar}>
                   {user?.name?.charAt(0).toUpperCase()}
                 </div>
 
-                <span className={styles.userName}>
-                  {user?.name}
-                </span>
+                <span className={styles.userName}>{user?.name}</span>
               </div>
 
-              <button
-                onClick={handleLogout}
-                className={styles.logout}
-              >
+              <button onClick={handleLogout} className={styles.logout}>
                 Logout
               </button>
-
             </div>
           )}
-
         </div>
       </div>
     </nav>

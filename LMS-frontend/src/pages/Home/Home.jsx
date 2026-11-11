@@ -12,7 +12,7 @@ const Home = () => {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const response = await axiosInstance.get("/courses");
+        const response = await axiosInstance.get("courses");
       console.log(response);
         const data = response.data?.courses || [];
 

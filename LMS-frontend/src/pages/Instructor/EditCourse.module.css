@@ -1,0 +1,559 @@
+
+/* ============================================================
+   LEARNHUB — EDIT COURSE PAGE
+   Professional White + Navy + Indigo UI
+   ============================================================ */
+
+/* DESIGN TOKENS */
+
+:root {
+  --edit-primary: #4f46e5;
+  --edit-primary-dark: #4338ca;
+  --edit-primary-soft: #eef2ff;
+
+  --edit-ink: #111827;
+  --edit-muted: #64748b;
+
+  --edit-white: #ffffff;
+  --edit-page: #f8fafc;
+
+  --edit-border: #e2e8f0;
+  --edit-border-soft: #edf1f6;
+
+  --edit-danger: #dc2626;
+  --edit-danger-soft: #fef2f2;
+
+  --edit-shadow:
+    0 12px 35px rgba(15, 23, 42, 0.07);
+}
+
+/* PAGE */
+
+.editPage {
+  width: 100%;
+  min-height: 100vh;
+
+  padding: 55px 24px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #f8fafc 100%
+    );
+}
+
+/* CONTAINER */
+
+.editContainer {
+  width: 100%;
+  max-width: 760px;
+
+  margin: 0 auto;
+
+  padding: 38px;
+
+  border: 1px solid var(--edit-border);
+  border-radius: 20px;
+
+  background: var(--edit-white);
+
+  box-shadow: var(--edit-shadow);
+}
+
+/* HEADER */
+
+.editHeader {
+  margin-bottom: 32px;
+}
+
+.editHeader h1 {
+  margin: 0 0 9px;
+
+  color: var(--edit-ink);
+
+  font-size: 28px;
+  font-weight: 850;
+
+  letter-spacing: -0.04em;
+}
+
+.editHeader p {
+  margin: 0;
+
+  color: var(--edit-muted);
+
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+/* FORM */
+
+.editForm {
+  display: flex;
+  flex-direction: column;
+
+  gap: 21px;
+}
+
+/* FORM GROUP */
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+
+  gap: 9px;
+}
+
+.formGroup label {
+  color: #334155;
+
+  font-size: 12px;
+  font-weight: 750;
+}
+
+/* INPUTS */
+
+.formGroup input,
+.formGroup textarea,
+.formGroup select {
+  width: 100%;
+
+  padding: 13px 14px;
+
+  border: 1px solid #dce3ec;
+  border-radius: 9px;
+
+  outline: none;
+
+  background: #ffffff;
+
+  color: var(--edit-ink);
+
+  font-size: 13px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.formGroup input {
+  min-height: 46px;
+}
+
+.formGroup textarea {
+  min-height: 145px;
+
+  resize: vertical;
+
+  line-height: 1.7;
+}
+
+.formGroup select {
+  min-height: 46px;
+
+  cursor: pointer;
+}
+
+.formGroup input:focus,
+.formGroup textarea:focus,
+.formGroup select:focus {
+  border-color: var(--edit-primary);
+
+  background: #ffffff;
+
+  box-shadow:
+    0 0 0 4px rgba(79, 70, 229, 0.09);
+}
+
+.formGroup input::placeholder,
+.formGroup textarea::placeholder {
+  color: #a0a8b5;
+}
+
+/* THUMBNAIL SECTION */
+
+.thumbnailSection {
+  display: flex;
+  flex-direction: column;
+
+  gap: 12px;
+}
+
+.thumbnailLabel {
+  color: #334155;
+
+  font-size: 12px;
+  font-weight: 750;
+}
+
+/* UPLOAD AREA */
+
+.uploadArea {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 9px;
+
+  min-height: 155px;
+
+  padding: 22px;
+
+  border: 2px dashed #c7d2fe;
+  border-radius: 12px;
+
+  background: #f8faff;
+
+  text-align: center;
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.uploadArea:hover {
+  border-color: var(--edit-primary);
+
+  background: var(--edit-primary-soft);
+}
+
+.uploadIcon {
+  font-size: 30px;
+}
+
+.uploadArea strong {
+  color: #344054;
+
+  font-size: 13px;
+  font-weight: 750;
+}
+
+.uploadArea small {
+  color: #98a2b3;
+
+  font-size: 11px;
+}
+
+/* FILE INPUT */
+
+.fileInput {
+  width: 100%;
+
+  padding: 10px;
+
+  border: 1px solid var(--edit-border);
+  border-radius: 8px;
+
+  background: #ffffff;
+
+  color: var(--edit-muted);
+
+  font-size: 12px;
+
+  cursor: pointer;
+}
+
+.fileInput::file-selector-button {
+  margin-right: 12px;
+
+  padding: 8px 12px;
+
+  border: none;
+  border-radius: 6px;
+
+  background: var(--edit-primary-soft);
+
+  color: var(--edit-primary-dark);
+
+  font-size: 11px;
+  font-weight: 750;
+
+  cursor: pointer;
+}
+
+/* UPLOAD HELP TEXT */
+
+.uploadHelp {
+  margin: 0;
+
+  color: #94a3b8;
+
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+/* IMAGE PREVIEW */
+
+.thumbnailPreviewSection {
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+}
+
+.thumbnailPreviewSection p {
+  margin: 0;
+
+  color: #475569;
+
+  font-size: 12px;
+  font-weight: 750;
+}
+
+.thumbnailPreview {
+  display: block;
+
+  width: 100%;
+  max-width: 380px;
+
+  height: 215px;
+
+  object-fit: cover;
+
+  border: 1px solid var(--edit-border);
+  border-radius: 12px;
+
+  background: #f1f5f9;
+}
+
+/* REMOVE IMAGE */
+
+.removeImageButton {
+  width: fit-content;
+
+  padding: 9px 14px;
+
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+
+  background: var(--edit-danger-soft);
+
+  color: var(--edit-danger);
+
+  font-size: 11px;
+  font-weight: 750;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.removeImageButton:hover {
+  transform: translateY(-1px);
+
+  background: #fee2e2;
+}
+
+/* FORM ACTIONS */
+
+.formActions {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  margin-top: 8px;
+  padding-top: 22px;
+
+  border-top: 1px solid var(--edit-border-soft);
+}
+
+/* UPDATE BUTTON */
+
+.updateButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 47px;
+
+  padding: 0 23px;
+
+  border: none;
+  border-radius: 9px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #5b55ee,
+      #4338ca
+    );
+
+  color: #ffffff;
+
+  font-size: 12px;
+  font-weight: 800;
+
+  box-shadow:
+    0 9px 20px rgba(79, 70, 229, 0.20);
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.updateButton:hover:not(:disabled) {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 13px 25px rgba(79, 70, 229, 0.27);
+}
+
+.updateButton:disabled {
+  opacity: 0.65;
+
+  cursor: not-allowed;
+}
+
+/* CANCEL BUTTON */
+
+.cancelButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 47px;
+
+  padding: 0 20px;
+
+  border: 1px solid var(--edit-border);
+  border-radius: 9px;
+
+  background: #ffffff;
+
+  color: #475569;
+
+  font-size: 12px;
+  font-weight: 750;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.cancelButton:hover {
+  border-color: #cbd5e1;
+
+  background: #f8fafc;
+}
+
+/* LOADING */
+
+.loadingPage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 65vh;
+
+  color: var(--edit-primary);
+
+  font-size: 15px;
+  font-weight: 750;
+}
+
+/* ERROR */
+
+.errorText {
+  color: var(--edit-danger);
+
+  font-size: 11px;
+  font-weight: 650;
+}
+
+/* FOCUS ACCESSIBILITY */
+
+.updateButton:focus-visible,
+.cancelButton:focus-visible,
+.removeImageButton:focus-visible,
+.fileInput:focus-visible {
+  outline: 3px solid rgba(79, 70, 229, 0.25);
+
+  outline-offset: 3px;
+}
+
+/* TABLET */
+
+@media (max-width: 768px) {
+  .editPage {
+    padding: 35px 18px;
+  }
+
+  .editContainer {
+    padding: 28px;
+  }
+
+  .editHeader h1 {
+    font-size: 25px;
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 480px) {
+  .editPage {
+    padding: 22px 13px;
+  }
+
+  .editContainer {
+    padding: 21px 17px;
+
+    border-radius: 14px;
+  }
+
+  .editHeader {
+    margin-bottom: 25px;
+  }
+
+  .editHeader h1 {
+    font-size: 23px;
+  }
+
+  .editForm {
+    gap: 18px;
+  }
+
+  .formGroup input,
+  .formGroup textarea,
+  .formGroup select {
+    font-size: 12px;
+  }
+
+  .thumbnailPreview {
+    height: 185px;
+  }
+
+  .formActions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .updateButton,
+  .cancelButton {
+    width: 100%;
+  }
+}
+
+/* REDUCED MOTION */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

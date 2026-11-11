@@ -3,7 +3,9 @@ const Enrollment = require("../models/Enrollment");
 const Assignment = require("../models/Assignment");
 const AssignmentSubmission = require("../models/AssignmentSubmission");
 const Quiz = require("../models/Quiz");
+const uploadToCloudinary = require("../utils/cloudinaryUpload");
 
+// Create Course
 // Create Course
 const createCourse = async (req, res) => {
   try {
@@ -14,6 +16,7 @@ const createCourse = async (req, res) => {
       category,
     } = req.body;
 
+    // Validate required fields
     if (!title || !description || price === undefined || !category) {
       return res.status(400).json({
         success: false,
@@ -21,14 +24,19 @@ const createCourse = async (req, res) => {
       });
     }
 
-    // req.file is set by the uploadThumbnail middleware when an image
-    // was sent with the request. Build a full URL so the frontend can
-    // use it directly in an <img src="..."> regardless of which port
-    // the frontend dev server runs on.
-    const thumbnail = req.file
-      ? `${req.protocol}://${req.get("host")}/uploads/thumbnails/${req.file.filename}`
-      : "";
+    // Upload course thumbnail to Cloudinary
+    let thumbnail = "";
 
+    if (req.file) {
+      const result = await uploadToCloudinary(
+        req.file.buffer,
+        "learnhub/courses"
+      );
+
+      thumbnail = result.secure_url;
+    }
+
+    // Create course in MongoDB
     const course = await Course.create({
       title,
       description,
@@ -43,6 +51,7 @@ const createCourse = async (req, res) => {
       msg: "Course created successfully",
       course,
     });
+
   } catch (error) {
     res.status(500).json({
       success: false,
@@ -51,7 +60,6 @@ const createCourse = async (req, res) => {
     });
   }
 };
-
 
 // Get All Published Courses
 const getAllCourses = async (req, res) => {
@@ -105,6 +113,7 @@ const getCourseById = async (req, res) => {
 
 
 // Update Course
+
 const updateCourse = async (req, res) => {
   try {
     const {
@@ -131,15 +140,20 @@ const updateCourse = async (req, res) => {
       });
     }
 
+    // Update course details
     if (title !== undefined) course.title = title;
     if (description !== undefined) course.description = description;
     if (price !== undefined) course.price = price;
     if (category !== undefined) course.category = category;
 
-    // Only replace the thumbnail if a new file was actually uploaded —
-    // otherwise leave the existing one alone.
+    // Upload new thumbnail to Cloudinary
     if (req.file) {
-      course.thumbnail = `${req.protocol}://${req.get("host")}/uploads/thumbnails/${req.file.filename}`;
+      const result = await uploadToCloudinary(
+        req.file.buffer,
+        "learnhub/courses"
+      );
+
+      course.thumbnail = result.secure_url;
     }
 
     await course.save();
@@ -149,6 +163,7 @@ const updateCourse = async (req, res) => {
       msg: "Course updated successfully",
       course,
     });
+
   } catch (error) {
     res.status(500).json({
       success: false,
@@ -157,6 +172,7 @@ const updateCourse = async (req, res) => {
     });
   }
 };
+
 
 
 // Delete Course

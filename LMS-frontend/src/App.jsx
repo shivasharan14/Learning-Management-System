@@ -7,6 +7,7 @@ import Login from './pages/auth/Login'
 import Register from './pages/auth/Register'
 import Home from './pages/Home/Home'
 import CourseDetails from './pages/Home/CourseDetails'
+import BecomeInstructor from "./pages/student/BecomeInstructor";
 
  import InstructorDashboard from './pages/InstructorDashboard'
 
@@ -36,6 +37,8 @@ import AdminCourses from './pages/admin/AdminCourses'
 import AdminUsers from './pages/admin/AdminUsers'
 import VerifyCertificate from './pages/student/VerifyCertificate'
 import CertificateView from './pages/student/CertificateView'
+import InstructorRequests from './pages/admin/InstructorRequests'
+import MyInstructorRequest from './pages/student/MyInstructorRequest'
 
 
 function App() {
@@ -114,6 +117,15 @@ function App() {
       <AddLecture/>
     </PrivateRoute>
   } 
+/>
+
+<Route
+  path="/become-instructor"
+  element={
+    <PrivateRoute allowedRoles={["student"]}>
+      <BecomeInstructor />
+    </PrivateRoute>
+  }
 />
 
 <Route 
@@ -232,6 +244,14 @@ function App() {
     </PrivateRoute>
   } 
 />
+<Route
+  path="/admin/instructor-requests"
+  element={
+    <PrivateRoute allowedRoles={["admin"]}>
+      <InstructorRequests />
+    </PrivateRoute>
+  }
+/>
 
 <Route 
   path='/admin/users' 
@@ -247,6 +267,15 @@ function App() {
   element={
     <PrivateRoute allowedRoles={["admin"]}>
       <AdminCourses/>
+    </PrivateRoute>
+  }
+/>
+
+<Route
+  path="/my-instructor-request"
+  element={
+    <PrivateRoute>
+      <MyInstructorRequest />
     </PrivateRoute>
   }
 />

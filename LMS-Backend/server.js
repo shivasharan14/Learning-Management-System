@@ -20,6 +20,7 @@ const progressRoutes = require("./routes/progressRoutes");
 const certificateRoutes = require("./routes/certificateRoutes");
 const notificationRoutes = require("./routes/notificationRoutes");
 const adminRoutes = require("./routes/adminRoutes");
+const roleRequestRoutes = require("./routes/roleRequestRoutes");
 
 const app = express();
 
@@ -44,6 +45,8 @@ app.use("/api/progress", progressRoutes);
 app.use("/api/certificates", certificateRoutes);
 app.use("/api/notifications", notificationRoutes);
 app.use("/api/admin", adminRoutes);
+
+app.use("/api/role-requests", roleRequestRoutes);
 
 // Test route
 app.get("/", (req, res) => {

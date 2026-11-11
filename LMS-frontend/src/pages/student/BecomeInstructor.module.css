@@ -1,0 +1,115 @@
+
+.container {
+  min-height: calc(100vh - 72px);
+  padding: 60px 20px;
+  background: #f8fafc;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.formCard,
+.successCard {
+  width: 100%;
+  max-width: 650px;
+  padding: 35px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+}
+
+.formCard h1,
+.successCard h1 {
+  margin: 0 0 10px;
+  color: #0f172a;
+  font-size: 30px;
+}
+
+.formCard p,
+.successCard p {
+  color: #64748b;
+  line-height: 1.6;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin-top: 22px;
+}
+
+.formGroup label {
+  color: #334155;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.formGroup input,
+.formGroup textarea {
+  width: 100%;
+  padding: 13px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 9px;
+  outline: none;
+  font-size: 14px;
+}
+
+.formGroup input:focus,
+.formGroup textarea:focus {
+  border-color: #4f46e5;
+}
+
+.formGroup textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.formCard button {
+  width: 100%;
+  margin-top: 25px;
+  padding: 14px;
+  border: none;
+  border-radius: 9px;
+  background: #4f46e5;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.formCard button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.successCard {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.successCard span {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 9px 16px;
+  border-radius: 20px;
+  background: #fef3c7;
+  color: #92400e;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 30px 15px;
+  }
+
+  .formCard,
+  .successCard {
+    padding: 22px;
+  }
+
+  .formCard h1,
+  .successCard h1 {
+    font-size: 24px;
+  }
+}

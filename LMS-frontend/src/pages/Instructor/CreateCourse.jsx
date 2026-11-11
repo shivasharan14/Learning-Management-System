@@ -15,6 +15,9 @@ const CreateCourse = () => {
   const [categories, setCategories] = useState([]);
   const [submitting, setSubmitting] = useState(false);
 
+  const [thumbnail, setThumbnail] = useState(null);
+  const [thumbnailPreview, setThumbnailPreview] = useState("");
+
   useEffect(() => {
     axiosInstance
       .get("/categories")
@@ -27,17 +30,71 @@ const CreateCourse = () => {
       });
   }, []);
 
+  // Preview URL cleanup
+  useEffect(() => {
+    return () => {
+      if (thumbnailPreview) {
+        URL.revokeObjectURL(thumbnailPreview);
+      }
+    };
+  }, [thumbnailPreview]);
+
+  // Handle image selection
+  const handleThumbnailChange = (e) => {
+    const file = e.target.files[0];
+
+    if (!file) return;
+
+    const allowedTypes = [
+      "image/jpeg",
+      "image/png",
+      "image/webp",
+      "image/gif",
+    ];
+
+    if (!allowedTypes.includes(file.type)) {
+      toast.error("Only JPG, PNG, WEBP and GIF images are allowed");
+      e.target.value = "";
+      return;
+    }
+
+    if (file.size > 5 * 1024 * 1024) {
+      toast.error("Image size must be less than 5MB");
+      e.target.value = "";
+      return;
+    }
+
+    setThumbnail(file);
+    setThumbnailPreview(URL.createObjectURL(file));
+  };
+
+  // Remove selected image
+  const removeThumbnail = () => {
+    setThumbnail(null);
+    setThumbnailPreview("");
+
+    const fileInput = document.getElementById("thumbnail");
+    if (fileInput) fileInput.value = "";
+  };
+
+  // Create course
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitting(true);
 
     try {
-      await axiosInstance.post("/courses", {
-        title,
-        description,
-        price: Number(price),
-        category,
-      });
+      const formData = new FormData();
+
+      formData.append("title", title);
+      formData.append("description", description);
+      formData.append("price", String(Number(price)));
+      formData.append("category", category);
+
+      if (thumbnail) {
+        formData.append("thumbnail", thumbnail);
+      }
+
+      await axiosInstance.post("/courses", formData);
 
       toast.success(
         "Course created! (still in Draft, publish it from Dashboard)"
@@ -45,6 +102,7 @@ const CreateCourse = () => {
 
       navigate("/instructor/dashboard");
     } catch (error) {
+      console.log(error);
       toast.error(
         error.response?.data?.msg || "Failed to create course"
       );
@@ -59,13 +117,10 @@ const CreateCourse = () => {
       <div className={styles.glowTwo}></div>
 
       <div className={styles.container}>
-        {/* Header */}
         <div className={styles.header}>
           <div>
             <span className={styles.eyebrow}>INSTRUCTOR SPACE</span>
-
             <h1>Create New Course</h1>
-
             <p>
               Turn your knowledge into an engaging learning experience.
             </p>
@@ -80,13 +135,10 @@ const CreateCourse = () => {
           </button>
         </div>
 
-        {/* Main Layout */}
         <div className={styles.layout}>
-          {/* Form */}
           <div className={styles.formCard}>
             <div className={styles.cardHeader}>
               <div className={styles.headerIcon}>✦</div>
-
               <div>
                 <h2>Course Information</h2>
                 <p>Tell students what your course is about.</p>
@@ -94,13 +146,10 @@ const CreateCourse = () => {
             </div>
 
             <form onSubmit={handleSubmit}>
-              {/* Title */}
               <div className={styles.field}>
                 <label htmlFor="title">
-                  Course Title
-                  <span>*</span>
+                  Course Title<span>*</span>
                 </label>
-
                 <input
                   id="title"
                   type="text"
@@ -109,19 +158,13 @@ const CreateCourse = () => {
                   onChange={(e) => setTitle(e.target.value)}
                   required
                 />
-
-                <small>
-                  Choose a clear and attractive title.
-                </small>
+                <small>Choose a clear and attractive title.</small>
               </div>
 
-              {/* Description */}
               <div className={styles.field}>
                 <label htmlFor="description">
-                  Course Description
-                  <span>*</span>
+                  Course Description<span>*</span>
                 </label>
-
                 <textarea
                   id="description"
                   placeholder="Explain what students will learn in this course..."
@@ -129,22 +172,18 @@ const CreateCourse = () => {
                   onChange={(e) => setDescription(e.target.value)}
                   required
                 ></textarea>
-
                 <small>
                   Give students a quick overview of the course.
                 </small>
               </div>
 
-              {/* Two columns */}
               <div className={styles.twoColumns}>
                 <div className={styles.field}>
                   <label htmlFor="price">
                     Course Price <span>*</span>
                   </label>
-
                   <div className={styles.priceInput}>
                     <span>₹</span>
-
                     <input
                       id="price"
                       type="number"
@@ -161,7 +200,6 @@ const CreateCourse = () => {
                   <label htmlFor="category">
                     Category <span>*</span>
                   </label>
-
                   <select
                     id="category"
                     value={category}
@@ -169,7 +207,6 @@ const CreateCourse = () => {
                     required
                   >
                     <option value="">Select category</option>
-
                     {categories.map((cat) => (
                       <option key={cat._id} value={cat._id}>
                         {cat.name}
@@ -179,13 +216,53 @@ const CreateCourse = () => {
                 </div>
               </div>
 
-              {/* Notice */}
+              {/* Course Thumbnail Upload */}
+              <div className={styles.imageUploadBox}>
+                <div className={styles.field}>
+                  <label htmlFor="thumbnail">Course Thumbnail</label>
+
+                  <label
+                    className={styles.uploadArea}
+                    htmlFor="thumbnail"
+                  >
+                    <span className={styles.uploadIcon}>🖼️</span>
+                    <strong>Click to upload course image</strong>
+                    <small>JPG, PNG, WEBP or GIF (Max 5MB)</small>
+                  </label>
+
+                  <input
+                    id="thumbnail"
+                    name="thumbnail"
+                    type="file"
+                    accept="image/jpeg,image/png,image/webp,image/gif"
+                    className={styles.fileInput}
+                    onChange={handleThumbnailChange}
+                  />
+
+                  {thumbnailPreview && (
+                    <>
+                      <img
+                        src={thumbnailPreview}
+                        alt="Selected course thumbnail"
+                        className={styles.imagePreview}
+                      />
+
+                      <button
+                        type="button"
+                        className={styles.removeImage}
+                        onClick={removeThumbnail}
+                      >
+                        Remove Image
+                      </button>
+                    </>
+                  )}
+                </div>
+              </div>
+
               <div className={styles.notice}>
                 <div className={styles.noticeIcon}>i</div>
-
                 <div>
                   <strong>Course will start as a Draft</strong>
-
                   <p>
                     After creating the course, you can add lectures,
                     assignments and quizzes. Publish it from your dashboard
@@ -194,14 +271,11 @@ const CreateCourse = () => {
                 </div>
               </div>
 
-              {/* Buttons */}
               <div className={styles.formActions}>
                 <button
                   type="button"
                   className={styles.cancelButton}
-                  onClick={() =>
-                    navigate("/instructor/dashboard")
-                  }
+                  onClick={() => navigate("/instructor/dashboard")}
                 >
                   Cancel
                 </button>
@@ -218,8 +292,7 @@ const CreateCourse = () => {
                     </>
                   ) : (
                     <>
-                      Create Course
-                      <span>→</span>
+                      Create Course<span>→</span>
                     </>
                   )}
                 </button>
@@ -227,33 +300,36 @@ const CreateCourse = () => {
             </form>
           </div>
 
-          {/* Preview / Side panel */}
+          {/* Course Preview */}
           <aside className={styles.sidePanel}>
-            <div className={styles.previewLabel}>
-              COURSE PREVIEW
-            </div>
+            <div className={styles.previewLabel}>COURSE PREVIEW</div>
 
             <div className={styles.previewCard}>
               <div className={styles.previewImage}>
-                <div className={styles.previewGlow}></div>
-
-                <span>LEARNHUB</span>
-
-                <div className={styles.previewPlay}>▶</div>
+                {thumbnailPreview ? (
+                  <img
+                    src={thumbnailPreview}
+                    alt="Course preview"
+                    className={styles.previewUploadedImage}
+                  />
+                ) : (
+                  <>
+                    <div className={styles.previewGlow}></div>
+                    <span>LEARNHUB</span>
+                    <div className={styles.previewPlay}>▶</div>
+                  </>
+                )}
               </div>
 
               <div className={styles.previewBody}>
                 <span className={styles.previewCategory}>
                   {category
-                    ? categories.find(
-                        (cat) => cat._id === category
-                      )?.name || "Course"
+                    ? categories.find((cat) => cat._id === category)?.name ||
+                      "Course"
                     : "COURSE"}
                 </span>
 
-                <h3>
-                  {title || "Your course title will appear here"}
-                </h3>
+                <h3>{title || "Your course title will appear here"}</h3>
 
                 <p>
                   {description ||
@@ -261,10 +337,7 @@ const CreateCourse = () => {
                 </p>
 
                 <div className={styles.previewFooter}>
-                  <strong>
-                    ₹{price || "0"}
-                  </strong>
-
+                  <strong>₹{price || "0"}</strong>
                   <span>Draft</span>
                 </div>
               </div>
@@ -272,10 +345,8 @@ const CreateCourse = () => {
 
             <div className={styles.tips}>
               <div className={styles.tipTitle}>
-                <span>✦</span>
-                Tips for a great course
+                <span>✦</span>Tips for a great course
               </div>
-
               <ul>
                 <li>Use a specific and engaging title.</li>
                 <li>Clearly explain what students will learn.</li>
@@ -290,4 +361,3 @@ const CreateCourse = () => {
 };
 
 export default CreateCourse;
-
